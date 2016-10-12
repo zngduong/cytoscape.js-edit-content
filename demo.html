@@ -6,7 +6,7 @@
 		<title>cytoscape-edit-content.js demo</title>
 
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
-
+		<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 		<script src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script>
 
 		<!-- for testing with local version of cytoscape.js -->
@@ -37,11 +37,13 @@
 		</style>
 
 		<script>
-			document.addEventListener('DOMContentLoaded', function(){
+			$(function(){
 
 				var cy = window.cy = cytoscape({
 					container: document.getElementById('cy'),
-
+					ready: function(){
+					},
+					
 					style: [
 						{
 							selector: 'node',
@@ -54,13 +56,6 @@
 							selector: 'edge',
 							style: {
 								'target-arrow-shape': 'triangle'
-							}
-						},
-
-						{
-							selector: ':selected',
-							style: {
-
 							}
 						}
 					],
@@ -87,7 +82,18 @@
 				});
 
 				// demo your core ext
-				cy.edit-content( /* args... */ );
+				cy.editContent({
+					selector: 'node',
+
+					commands: [
+						{
+							content: '<input type="text" name="" value="Demo html" size="30" />',
+							select: function(ele){
+								console.log( ele.id() );
+							}
+						}
+					]
+				});
 
 			});
 		</script>
