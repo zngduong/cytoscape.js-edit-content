@@ -2,41 +2,41 @@
 
 <html>
 
-	<head>
-		<title>cytoscape-edit-content.js demo</title>
+<head>
+	<title>cytoscape-edit-content.js demo</title>
 
-		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
-		<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-		<script src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+	<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script>
 
-		<!-- for testing with local version of cytoscape.js -->
-		<!--<script src="../cytoscape.js/build/cytoscape.js"></script>-->
+	<!-- for testing with local version of cytoscape.js -->
+	<!--<script src="../cytoscape.js/build/cytoscape.js"></script>-->
 
-		<script src="cytoscape-edit-content.js"></script>
+	<script src="cytoscape-edit-content.js"></script>
 
-		<style>
-			body {
-				font-family: helvetica neue, helvetica, liberation sans, arial, sans-serif;
-				font-size: 14px;
-			}
+	<style>
+		body {
+			font-family: helvetica neue, helvetica, liberation sans, arial, sans-serif;
+			font-size: 14px;
+		}
+		
+		#cy {
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			z-index: 999;
+		}
+		
+		h1 {
+			opacity: 0.5;
+			font-size: 1em;
+			font-weight: bold;
+		}
+	</style>
 
-			#cy {
-				position: absolute;
-				left: 0;
-				top: 0;
-				bottom: 0;
-				right: 0;
-				z-index: 999;
-			}
-
-			h1 {
-				opacity: 0.5;
-				font-size: 1em;
-				font-weight: bold;
-			}
-		</style>
-
-		<script>
+	<script>
 			$(function(){
 
 				var cy = window.cy = cytoscape({
@@ -82,28 +82,17 @@
 				});
 
 				// demo your core ext
-				cy.editContent({
-					selector: 'node',
-
-					commands: [
-						{
-							content: '<input type="text" name="" value="Demo html" size="30" />',
-							select: function(ele){
-								console.log( ele.id() );
-							}
-						}
-					]
-				});
+				cy.editContent();
 
 			});
 		</script>
-	</head>
+</head>
 
-	<body>
-		<h1>cytoscape-edit-content demo</h1>
+<body>
+	<h1>cytoscape-edit-content demo</h1>
 
-		<div id="cy"></div>
-
-	</body>
+	<div id="cy"></div>
+	<div id="editContent"></div>
+</body>
 
 </html>
